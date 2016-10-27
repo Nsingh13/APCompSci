@@ -13,13 +13,13 @@ public class Assignment18 {
 
     public static void main(String[] args) {
 
-	int numOfSquares = 0;
-	int num = 2;
-	int total = 1;
+	long numOfSquares = 0;
+	long num = 2;
+	long total = 1;
 	
 	System.out.print("Print the first n magic squares: ");
 	Scanner input = new Scanner(System.in);
-	int squares = input.nextInt();
+	long squares = input.nextInt();
 	
         while(squares < 1)
         {
@@ -31,13 +31,13 @@ public class Assignment18 {
 
     }
 
-    public static void loop(int squares, int numOfSquares, int num, int total) {
+    public static void loop(long squares, long numOfSquares, long num, long total) {
 	while (!(numOfSquares == squares)) {
 	    total += num;
 	    double sqrt = (double) Math.sqrt(total);
-	    if (sqrt == (int) sqrt && total<=1631432881) {
+	    if (sqrt == (long) sqrt) {
 		numOfSquares++;
-		printTotal(total);
+		printTotal(total,sqrt,num);
 	    }
 	    else{
 		
@@ -48,8 +48,8 @@ public class Assignment18 {
 
     }
 
-    public static void printTotal(int total) {
-	System.out.println(total);
+    public static void printTotal(long total,double sqrt, long num) {
+	System.out.println(total + " (1-"+num+") sqrt("+sqrt+")");
 
     }
   
