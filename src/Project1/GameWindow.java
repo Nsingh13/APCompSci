@@ -22,85 +22,90 @@ public class GameWindow {
     public static int x = 0;
     public static int y = 0;
     public static int z = 0;
-    
 
+    // This game uses user input to muniplate the game data
+    // Pre: None
+    // Post: None
     public static void drawGameWindow() throws MalformedURLException {
-	if(Runner.total < 21){
-	String text = "Total:"+Runner.total;
-	JButton buttonOne = new JButton("Add 1");
-	JButton buttonTwo = new JButton("Add 2");
-	JButton buttonThree = new JButton("Add 3");
-	JLabel Label = new JLabel(text);
-	URL url = new URL(randomURL());
-	Icon icon = new ImageIcon(url);
-	JLabel label = new JLabel(icon);
+	if (Runner.total < Runner.num) {
+	    String text = "Total:" + Runner.total;
+	    JButton buttonOne = new JButton("Add 1");
+	    JButton buttonTwo = new JButton("Add 2");
+	    JButton buttonThree = new JButton("Add 3");
+	    JLabel Label = new JLabel(text);
+	    URL url = new URL(randomURL());
+	    Icon icon = new ImageIcon(url);
+	    JLabel label = new JLabel(icon);
 
-	JFrame f = new JFrame("Animation");
+	    JFrame f = new JFrame("Animation");
 
-	f.getContentPane().add(label);
-	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	f.setLocationRelativeTo(null);
-	f.setVisible(true);
-	Label.setFont(new Font("Impact",5,30));
-	f.add(Label);
-	Label.setBounds(x, y-20, z, 30);
-	f.add(buttonOne);
-	buttonOne.setBounds(x, y + 20, z, 20);
-	f.add(buttonTwo);
-	buttonTwo.setBounds(x, y + 50, z, 20);
-	f.add(buttonThree);
-	buttonThree.setBounds(x, y + 80, z, 20);
+	    f.getContentPane().add(label);
+	    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    f.setLocationRelativeTo(null);
+	    f.setVisible(true);
+	    Label.setFont(new Font("Impact", 5, 30));
+	    f.add(Label);
+	    Label.setBounds(x, y - 20, z, 30);
+	    f.add(buttonOne);
+	    buttonOne.setBounds(x, y + 20, z, 20);
+	    f.add(buttonTwo);
+	    buttonTwo.setBounds(x, y + 50, z, 20);
+	    f.add(buttonThree);
+	    buttonThree.setBounds(x, y + 80, z, 20);
 
-	f.getContentPane().add(label);
-	f.pack();
+	    f.getContentPane().add(label);
+	    f.pack();
 
-	f.setLocationRelativeTo(null);
-	buttonOne.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
+	    f.setLocationRelativeTo(null);
+	    buttonOne.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
 
-		f.dispose();
-		Runner.total++;
-		Runner.game();
-		try {
-		    drawGameWindow();
-		} catch (MalformedURLException e1) {
-		    e1.printStackTrace();
+		    f.dispose();
+		    Runner.total++;
+		    Runner.game();
+		    try {
+			drawGameWindow();
+		    } catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		    }
+
 		}
+	    });
 
-	    }
-	});
+	    buttonTwo.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
 
-	buttonTwo.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
+		    f.dispose();
+		    Runner.total += 2;
+		    Runner.game();
+		    try {
+			drawGameWindow();
+		    } catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		    }
 
-		f.dispose();
-		Runner.total += 2;
-		Runner.game();
-		try {
-		    drawGameWindow();
-		} catch (MalformedURLException e1) {
-		    e1.printStackTrace();
 		}
+	    });
+	    buttonThree.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
 
-	    }
-	});
-	buttonThree.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
+		    f.dispose();
+		    Runner.total += 3;
+		    Runner.game();
+		    try {
+			drawGameWindow();
+		    } catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		    }
 
-		f.dispose();
-		Runner.total += 3;
-		Runner.game();
-		try {
-		    drawGameWindow();
-		} catch (MalformedURLException e1) {
-		    e1.printStackTrace();
 		}
-
-	    }
-	});
+	    });
 	}
     }
 
+    // This randomly determines the dankest memes
+    // Pre: None
+    // Post: The URL of a Dank GIF
     public static String randomURL() {
 	int num = rand.nextInt(13);
 	if (num == 0) {

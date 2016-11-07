@@ -22,32 +22,32 @@ public class WinWindow {
     public static int x = 0;
     public static int y = 0;
     public static int z = 0;
-    
 
+    // This draws the frame for the window
+    // Pre: None
+    // Post: None
     public static void drawGameWindow() throws MalformedURLException {
 	String text = Runner.Winner;
 	JButton buttonOne = new JButton("Add 1");
 	JButton buttonTwo = new JButton("Add 2");
 	JButton buttonThree = new JButton("Add 3");
-	JLabel Label = new JLabel(text);
+	JLabel Label = new JLabel(text + " WINS!!!!");
 	URL url = new URL("http://i.imgur.com/GMSZrwX.gif");
 	Icon icon = new ImageIcon(url);
 	JLabel label = new JLabel(icon);
 
 	JFrame f = new JFrame("Animation");
-
 	f.getContentPane().add(label);
 	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	f.setLocationRelativeTo(null);
 	f.setVisible(true);
-	Label.setFont(new Font("Impact",5,30));
+	Label.setFont(new Font("Impact", 5, 30));
 	f.add(Label);
-	Label.setBounds(x, y-20, z, 30);
-	
+
+	Label.setBounds(100, 120, 4000, 100);
 
 	f.getContentPane().add(label);
-	f.pack();
-
+	f.setSize(420, 300);
 	f.setLocationRelativeTo(null);
     }
 }
