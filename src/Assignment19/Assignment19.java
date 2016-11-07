@@ -2,6 +2,11 @@ package Assignment19;
 
 import java.util.Scanner;
 
+
+//Sean Kelker
+//Per 2
+//11/6/16
+
 public class Assignment19 {
 
     public static void main(String[] args) {
