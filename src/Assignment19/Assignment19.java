@@ -28,7 +28,7 @@ public class Assignment19 {
     }
 
     public static String input(Scanner input) {
-	System.out.print("\nWhat food would you like to eat? (Type â€œIâ€™m fullâ€ to quit):");
+	System.out.print("\nWhat food would you like to eat? (Type “I’m full” to quit):");
 	String food = input.nextLine();
 	return food;
 
