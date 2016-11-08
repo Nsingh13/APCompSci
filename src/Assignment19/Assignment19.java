@@ -15,10 +15,14 @@ public class Assignment19 {
 	boolean eat = true;
 	while (eat) {
 	    String food = input(input);
+	    if(food.equals("I'm full")){
+		break;
+	    }
 	    for (int i = 0; i < food.length(); i++) {
 		if (nomCount == 4) {
 		    burp();
 		    nomCount = 0;
+		    
 		} else {
 		    nom();
 		    nomCount++;
@@ -28,7 +32,7 @@ public class Assignment19 {
     }
 
     public static String input(Scanner input) {
-	System.out.print("\nWhat food would you like to eat? (Type “I’m full” to quit):");
+	System.out.print("\nWhat food would you like to eat? (Type \"I'm full\" to quit):");
 	String food = input.nextLine();
 	return food;
 
