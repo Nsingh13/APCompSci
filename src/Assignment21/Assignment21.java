@@ -74,7 +74,14 @@ public class Assignment21 {
 	    System.out.println("Invalid Input");
 	    System.exit(0);
 	}
+	if (romanNum == 0) {
+	    System.out.println(
+		    "The number zero does not have its own Roman numeral,\n but the word nulla (the Latin word meaning none) was used by medieval scholars in lieu of 0.\n  Dionysius Exiguus was known to use nulla alongside Roman numerals in 525.[30][31] About 725, \n Bede or one of his colleagues used the letter N, the initial of nulla or of nihil (the Latin word for nothing), in a table of epacts,\n all written in Roman numerals");
 
+	} else if (romanNum < 0) {
+	    System.out.println("Invalid Input"); 
+	    System.exit(0);
+	}
 	int runningnum = romanNum;
 	int thousands = romanNum / 1000;
 	for (int i = 0; i < thousands; i++) {
@@ -82,6 +89,10 @@ public class Assignment21 {
 	}
 
 	runningnum = runningnum - (thousands * 1000);
+	if (runningnum >= 900 && runningnum <= 999) {
+	    System.out.print("CM");
+	    runningnum -= 900;
+	}
 	int fivehundereds = runningnum / 500;
 	for (int i = 0; i < fivehundereds; i++) {
 	    System.out.print("D");
@@ -98,6 +109,10 @@ public class Assignment21 {
 	}
 
 	runningnum = runningnum - (hundereds * 100);
+	if (runningnum >= 90 && runningnum <= 99) {
+	    System.out.print("XC");
+	    runningnum -= 90;
+	}
 	int fivetens = runningnum / 50;
 	for (int i = 0; i < fivetens; i++) {
 	    System.out.print("L");
@@ -114,10 +129,14 @@ public class Assignment21 {
 	}
 
 	runningnum = runningnum - (tens * 10);
+	if (runningnum == 9) {
+	    System.out.print("IX");
+	    runningnum -= 9;
+	}
 	int fives = runningnum / 5;
-	
 	for (int i = 0; i < fives; i++) {
 	    System.out.print("V");
+
 	}
 
 	runningnum = runningnum - (fives * 5);
