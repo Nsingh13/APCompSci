@@ -19,20 +19,19 @@ public class Assignment22 {
 	    }
 
 	}
-	
+
 	double g1 = Integer.valueOf(str.substring(0, indexValues[0]));
-	double g2 = Integer.valueOf(str.substring(indexValues[tNum-2]+1, indexValues[tNum-1]));
-	double rot = (g1/g2)*10;
-	
+	double g2 = Integer.valueOf(str.substring(indexValues[tNum - 2] + 1, indexValues[tNum - 1]));
+	double rot = (g1 / g2) * 10;
+
 	String dir;
-	if(tNum%2==0){
+	if (tNum % 2 == 0) {
 	    dir = "CC";
-	    
-	}
-	else{
+
+	} else {
 	    dir = "C";
 	}
-	System.out.println(rot+" ,"+dir);
+	System.out.println(rot + " ," + dir);
     }
 
 }
