@@ -19,8 +19,14 @@ public class Assignment24Part2 {
 	for (int i = 0; i < 6; i++) {
 	    System.out.println((i + 1) + ": " + arr[i]);
 	}
+	
 	System.out.println("");
-	int maxValue = rolls / 3;
+	int maxValue = 0;
+	for (int i = 0; i < 6; i++) {
+	    if(arr[i]>maxValue){
+		maxValue = arr[i];
+	    }
+	}
 	int scale = maxValue / 9;
 
 	for (int i = 0; i < 9; i++) {
