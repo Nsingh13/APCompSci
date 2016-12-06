@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Assignment25Part2 {
     public static void main(String[] args) {
+
 	Scanner input = new Scanner(System.in);
 	System.out.print("How many numbers do you have?");
 	int quantNum = input.nextInt();
@@ -25,7 +26,7 @@ public class Assignment25Part2 {
     }
 
     public static String finArray(int quantNum, int numIn[]) {
-
+	int ihatejake = 0;
 	Arrays.sort(numIn);
 	String line = "No repeats: [";
 	int value = 0;
@@ -33,8 +34,14 @@ public class Assignment25Part2 {
 	    if (numIn[i] == value) {
 
 	    } else {
-		value = numIn[i];
-		line += numIn[i] + ",";
+		if (ihatejake == 0) {
+		    value = numIn[i];
+		    line += numIn[i];
+		    ihatejake++;
+		} else {
+		    value = numIn[i];
+		    line +=","+ numIn[i] ;
+		}
 	    }
 
 	}
