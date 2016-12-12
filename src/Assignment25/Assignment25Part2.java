@@ -1,4 +1,4 @@
-package Assignmnet25;
+package Assignment25;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -40,7 +40,7 @@ public class Assignment25Part2 {
 		    ihatejake++;
 		} else {
 		    value = numIn[i];
-		    line +=","+ numIn[i] ;
+		    line += "," + numIn[i];
 		}
 	    }
 

@@ -1,4 +1,4 @@
-package Assignmnet25;
+package Assignment25;
 
 public class Assignment25 {
     public static void main(String[] args) {
