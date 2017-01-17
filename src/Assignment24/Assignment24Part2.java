@@ -19,11 +19,11 @@ public class Assignment24Part2 {
 	for (int i = 0; i < 6; i++) {
 	    System.out.println((i + 1) + ": " + arr[i]);
 	}
-	
+
 	System.out.println("");
 	int maxValue = 0;
 	for (int i = 0; i < 6; i++) {
-	    if(arr[i]>maxValue){
+	    if (arr[i] > maxValue) {
 		maxValue = arr[i];
 	    }
 	}
