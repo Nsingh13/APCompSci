@@ -2,15 +2,21 @@ package Assignment28;
 
 public class Player {
 	String peice;
+	String playerName;
 
-	public Player(String p) {
+	public Player(String p, String pn) {
 		peice = p;
+		playerName = pn;
 
 	}
 
-	public void move(int loc, Board board) {
-		int x, y;
+	public String getName() {
+		return playerName;
 
+	}
+
+	public static int convertX(int loc) {
+		int x;
 		if (loc == 1 || loc == 4 || loc == 7) {
 			x = 0;
 		} else if (loc == 2 || loc == 5 || loc == 8) {
@@ -18,7 +24,11 @@ public class Player {
 		} else {
 			x = 2;
 		}
+		return x;
+	}
 
+	public static int convertY(int loc) {
+		int y;
 		if (loc == 1 || loc == 2 || loc == 3) {
 			y = 0;
 		} else if (loc == 4 || loc == 5 || loc == 6) {
@@ -26,7 +36,12 @@ public class Player {
 		} else {
 			y = 2;
 		}
-		board.addPeice(x, y, peice);
+		return y;
+	}
+
+	public void move(int loc, Board board) {
+
+		board.addPeice(convertX(loc), convertY(loc), peice);
 		board.printBoard();
 
 	}

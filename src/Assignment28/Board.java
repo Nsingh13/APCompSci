@@ -80,5 +80,15 @@ public class Board {
 		return winner;
 
 	}
-	
+
+	public boolean checkSpot(int loc) {
+		if (board[Player.convertX(loc)][Player.convertX(loc)].equals("X")
+				|| board[Player.convertX(loc)][Player.convertX(loc)].equals("Y")) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
 }
