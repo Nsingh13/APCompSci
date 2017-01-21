@@ -1,5 +1,6 @@
 package Assignment28;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -50,9 +51,12 @@ public class Runner {
 		int loc = 0;
 		System.out.println("");
 		System.out.print(p.getName() + "'s turn to move:");
+
 		try {
 			loc = scan.nextInt();
-		} catch (Exception e) {
+
+		} catch (InputMismatchException e) {
+
 			System.out.println("Error!");
 			invalidMove(p);
 		}
@@ -68,6 +72,7 @@ public class Runner {
 
 			System.out.println(p.getName() + "'s WINS!!!!!! (╯°□°)╯︵ ┻━┻:");
 			System.out.println("Would you like to play again (Yes/No)");
+
 			String play = scan.next();
 
 			if (play.equals("Yes")) {
