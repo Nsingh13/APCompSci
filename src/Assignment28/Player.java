@@ -1,5 +1,7 @@
 package Assignment28;
 
+import java.util.Scanner;
+
 public class Player {
 	String peice;
 	String playerName;
@@ -42,7 +44,25 @@ public class Player {
 	public void move(int loc, Board board) {
 
 		board.addPeice(convertX(loc), convertY(loc), peice);
-		board.printBoard();
+
+	}
+
+	public static int getMove() {
+		Scanner scan = new Scanner(System.in);
+		int loc = 0;
+		if (scan.hasNextInt()) {
+			loc = scan.nextInt();
+		} else {
+			System.out.println("Invalid Move");
+			getMove();
+
+		}
+		if (!Board.checkSpot(loc)) {
+			System.out.println("Invalid Move");
+			getMove();
+
+		}
+		return loc;
 
 	}
 

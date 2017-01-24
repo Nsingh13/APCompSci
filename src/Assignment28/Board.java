@@ -1,7 +1,7 @@
 package Assignment28;
 
 public class Board {
-	String[][] board = new String[3][3];
+	static String[][] board = new String[3][3];
 
 	public Board(String[][] br) {
 		board = br;
@@ -81,9 +81,11 @@ public class Board {
 
 	}
 
-	public boolean checkSpot(int loc) {
+	public static boolean checkSpot(int loc) {
 		if (board[Player.convertX(loc)][Player.convertX(loc)].equals("X")
 				|| board[Player.convertX(loc)][Player.convertX(loc)].equals("Y")) {
+			return false;
+		} else if (loc > 10 || loc < 0) {
 			return false;
 		} else {
 			return true;

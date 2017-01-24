@@ -1,6 +1,5 @@
 package Assignment28;
 
-import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,24 +10,28 @@ public class Runner {
 
 	private static String[][] playBoard = new String[3][3];
 
-	private static Scanner scan = new Scanner(System.in);
 	private static Board board = new Board(playBoard);
 	private static Random rand = new Random();
 
 	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+
 		String x = "X";
 		String o = "O";
 		String player1Name;
 		String player2Name;
 
-		System.out.println("Welcome to Tic Tac Toe");
-		System.out.println("Enter Name of Player 1:");
-		player1Name = scan.next();
-		System.out.println("Enter Name of Player 2:");
-		player2Name = scan.next();
+		// System.out.println("Welcome to Tic Tac Toe");
+		//
+		// System.out.println("Enter Name of Player 1:");
+		// player1Name = scan.next();
+		// System.out.println("Enter Name of Player 2:");
+		// player2Name = scan.next();
+		player2Name = "";
+		player1Name = "";
 
-		Player player2 = new Player(o, player2Name);
 		Player player1 = new Player(x, player1Name);
+		Player player2 = new Player(o, player2Name);
 
 		board.populateBoard();
 		board.printBoard();
@@ -43,46 +46,15 @@ public class Runner {
 			}
 
 			isPlayer1 = !isPlayer1;
+			board.printBoard();
+
 		}
 
 	}
 
 	public static void runTurn(Player p) {
-		int loc = 0;
-		System.out.println("");
-		System.out.print(p.getName() + "'s turn to move:");
 
-		try {
-			loc = scan.nextInt();
-
-		} catch (InputMismatchException e) {
-
-			System.out.println("Error!");
-			invalidMove(p);
-		}
-
-		if (board.checkSpot(loc)) {
-			p.move(loc, board);
-
-		} else {
-			invalidMove(p);
-		}
-
-		if (board.determineWinner()) {
-
-			System.out.println(p.getName() + "'s WINS!!!!!! (╯°□°)╯︵ ┻━┻:");
-			System.out.println("Would you like to play again (Yes/No)");
-
-			String play = scan.next();
-
-			if (play.equals("Yes")) {
-				main(null);
-			} else {
-				System.exit(0);
-				System.out.println("Goodbye");
-			}
-
-		}
+		p.move(p.getMove(), board);
 
 	}
 
