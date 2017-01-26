@@ -35,9 +35,9 @@ public class Matrix {
 
 	public void solutions(double[][] inv) {
 
-		double matrix1 = (matrix[0][0] * inv[0][0]) + (matrix[0][1] * inv[1][0]);
-		double matrix2 = (matrix[0][0] * inv[0][1]) + (matrix[0][1] * inv[1][1]);
-		System.out.println("The solutions are" + matrix1 + " and " + matrix2);
+		double sol1 = (matrix[0][0] * inv[0][0]) + (matrix[0][1] * inv[1][0]);
+		double sol2 = (matrix[0][0] * inv[0][1]) + (matrix[0][1] * inv[1][1]);
+		System.out.println("The solutions are (" + sol1 + ", " + sol2 + ")");
 
 	}
 
