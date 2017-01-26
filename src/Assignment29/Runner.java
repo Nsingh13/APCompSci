@@ -16,21 +16,30 @@ public class Runner {
 		System.out.println("Enter a, b, and c for the first equation:");
 		System.out.print("Enter A:\n");
 		double A1 = scan.nextDouble();
+
 		System.out.print("Enter B:\n");
 		double B1 = scan.nextDouble();
+
 		System.out.print("Enter C:\n");
 		double C1 = scan.nextDouble();
 
 		System.out.println("Enter a, b, and c for the second equation:");
 		System.out.print("Enter A:\n");
 		double A2 = scan.nextDouble();
+
 		System.out.print("Enter B:\n");
 		double B2 = scan.nextDouble();
+
 		System.out.print("Enter C:\n");
 		double C2 = scan.nextDouble();
 
-		coefMat.populate(A1, B1, C1, A2, B2, C2);
-		solMat.populate(A1, B1, C1, A2, B2, C2);
+		System.out.println(A1 + "X +" + B1 + "Y = " + C1 + ", " + A2 + "X + " + B2 + "Y = " + C2);
+		coefMat.populate(A1, B1, A2, B2, C1, C2);
+		solMat.populate(A1, B1, A2, B2, C1, C2);
+
+		if (coefMat.slopeCheck(solMat.getMat())) {
+			solMat.solutions(coefMat.findInverse());
+		}
 	}
 
 }
