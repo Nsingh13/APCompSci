@@ -10,6 +10,7 @@ public class Board {
 
 	}
 
+	// This piece populates the board
 	public void popBoard() {
 		int i = 1;
 		for (int y = 0; y < 3; y++) {
@@ -22,6 +23,7 @@ public class Board {
 
 	}
 
+	// this prints the board to the console
 	public void printBoard() {
 
 		int line = 0;
@@ -50,6 +52,7 @@ public class Board {
 
 	}
 
+	// This takes a board location and give the Y axis position
 	public int convertY(int loc) {
 
 		int y;
@@ -64,6 +67,7 @@ public class Board {
 		return y;
 	}
 
+	// This takes a board location and give the X axis position
 	public int convertX(int loc) {
 
 		int x;
@@ -78,12 +82,14 @@ public class Board {
 		return x;
 	}
 
+	// This adds a peice to the board
 	public void addPeice(int loc, String p) {
 
 		board[convertX(loc)][convertY(loc)] = p;
 
 	}
 
+	// This determines is the move is legal
 	public boolean checkMove(int loc) {
 
 		if (board[convertX(loc)][convertY(loc)].equals("X") || board[convertX(loc)][convertY(loc)].equals("Y")) {
@@ -100,6 +106,7 @@ public class Board {
 
 	}
 
+	// This look if a player has won the game
 	public boolean determineWinner() {
 
 		boolean winner = false;
