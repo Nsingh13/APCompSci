@@ -17,16 +17,17 @@ public class Runner {
 
 		System.out.print("Enter name of Player 2:");
 		String name2 = scan.nextLine();
-
+		// Decalring objects for the game
 		Player player1 = new Player(X, name1);
 		Player player2 = new Player(O, name2);
 		Board board = new Board(boardSet);
-
+		// This initializes the game
 		board.popBoard();
 		board.printBoard();
 
 		boolean isPlayerOne = true;
 
+		// This loop runs player turn
 		for (int i = 0; i < 9; i++) {
 			System.out.println("");
 			if (isPlayerOne) {
@@ -48,6 +49,7 @@ public class Runner {
 			}
 
 		}
+		System.out.println("It is a tie!!! You both suck");
 
 	}
 

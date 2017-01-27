@@ -11,6 +11,7 @@ public class Player {
 		name = n;
 	}
 
+	// This method gets input and and determines if the move is valid
 	public void turn(Board b) {
 		boolean run = false;
 
