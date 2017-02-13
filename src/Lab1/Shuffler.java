@@ -22,7 +22,7 @@ public class Shuffler {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Results of " + SHUFFLE_COUNT + " consecutive perfect shuffles:");
-		int[] values1 = { 0, 1, 2, 3 };
+		int[] values1 = { 0, 1, 2, 3, 4 };
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			perfectShuffle(values1);
 			System.out.print("  " + j + ":");
@@ -61,9 +61,10 @@ public class Shuffler {
 
 		int a = 0;
 		int b = 0;
+
 		int middleOfStack = (values.length / 2);
 
-		int[] stack1 = new int[(values.length / 2) + 1];
+		int[] stack1 = new int[(values.length / 2)];
 		int[] stack2 = new int[(values.length / 2) + 1];
 
 		for (int i = 0; i < values.length / 2; i++) {
