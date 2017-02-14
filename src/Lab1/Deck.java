@@ -2,6 +2,7 @@ package Lab1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * The Deck class represents a shuffled deck of cards. It provides several
@@ -35,8 +36,8 @@ public class Deck {
 	public Deck(String[] ranks, String[] suits, int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 		cards = new ArrayList<Card>();
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 13; j++) {
+		for (int i = 0; i < suits.length; i++) {
+			for (int j = 0; j < values.length; j++) {
 				Card tempCard = new Card(ranks[j], suits[i], values[j]);
 				cards.add(tempCard);
 
@@ -73,6 +74,24 @@ public class Deck {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		Random random = new Random();
+		List<Card> shuffled = new ArrayList<Card>();
+		shuffled.equals(cards);
+		int deckSize = cards.size();
+		for (int i = 0; i < deckSize; i++) {
+			int rand = random.nextInt(cards.size());
+			// System.out.println("rand:" + rand + " size:" + cards.size());
+			shuffled.add(cards.get(rand));
+			cards.remove(rand);
+
+		}
+		cards.clear();
+		for (int i = 0; i < deckSize; i++) {
+			cards.add(shuffled.get(i));
+
+		}
+		size = 52;
+
 	}
 
 	/**
