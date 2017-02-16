@@ -26,7 +26,7 @@ public class ElevensBoard extends Board {
 	/**
 	 * The values of the cards for this game to be sent to the deck.
 	 */
-	private static final int[] POINT_VALUES = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0, 0 };
+	private static final int[] POINT_VALUES = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
 
 	/**
 	 * Flag used to control debugging print statements.
@@ -54,7 +54,7 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-		if (selectedCards.size() == 1 || selectedCards.size() == 2) {
+		if (selectedCards.size() == 2  || selectedCards.size() == 3) {
 			return true;
 
 		} else {
@@ -74,8 +74,35 @@ public class ElevensBoard extends Board {
 	public boolean anotherPlayIsPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 ** **/
 		System.out.println(cardAt(0).pointValue());
+		for (int i = 0; i < size(); i++) {
+			for (int j = 0; j < size(); j++) {
+				int sum = cardAt(i).pointValue() + cardAt(j).pointValue();
+				if (sum == 11 && !(i == j)) {
+					return true;
+				}
+			}
+		}
 
-		return true;
+		for (int i = 0; i < size(); i++) {
+			Boolean J = false;
+			Boolean Q = false;
+			Boolean K = false;
+			
+			if(cardAt(i).rank().equals("Jack")){
+				J = true;
+			}
+			if(cardAt(i).rank().equals("Queen")){
+				Q = true;
+			}
+			if(cardAt(i).rank().equals("King")){
+				K = true;
+			}
+			if(J&&Q&&K){
+				return true;
+			}
+		}
+
+		return false;
 
 	}
 
@@ -95,7 +122,7 @@ public class ElevensBoard extends Board {
 			sum += selectedCards.get(i);
 
 		}
-		if (sum == 11) {
+		if (sum == 36) {
 			return true;
 
 		} else {
@@ -117,10 +144,10 @@ public class ElevensBoard extends Board {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 		int sum = 0;
 		for (int i = 0; i < selectedCards.size(); i++) {
-			sum += selectedCards.get(i);
+			System.out.println(selectedCards.get(i));
 
 		}
-		if (sum == 36) {
+		if (sum == 0) {
 			return true;
 
 		} else {
