@@ -72,26 +72,11 @@ public class ElevensBoard extends Board {
 	 */
 	@Override
 	public boolean anotherPlayIsPossible() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-		/*
-		 * ArrayList<Integer> cards = new ArrayList<Integer>(); for (int i = 0;
-		 * i < deckSize(); i++) { for (int j = 0; j < deckSize() - i; j++) {
-		 * 
-		 * cards.clear(); // cards.add(cardAt(i).pointValue()); //
-		 * cards.add(cardAt(j).pointValue()); if (containsPairSum11(cards)) {
-		 * return true; }
-		 * 
-		 * }
-		 * 
-		 * } boolean J = false, Q = false, K = false; for (int i = 0; i <
-		 * deckSize(); i++) { if (cardAt(i).pointValue() == 11) { J = true; } if
-		 * (cardAt(i).pointValue() == 12) { Q = true; } if
-		 * (cardAt(i).pointValue() == 11) { K = true; } if (J && Q && K) {
-		 * return true; }
-		 * 
-		 * } return false;
-		 */
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 ** **/
+		System.out.println(cardAt(0).pointValue());
+
 		return true;
+
 	}
 
 	/**
