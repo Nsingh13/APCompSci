@@ -54,12 +54,18 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-		if (selectedCards.size() == 2  || selectedCards.size() == 3) {
+		// System.out.println("Selected Size:" + selectedCards.size());
+		// System.out.println("Contains11:" + containsPairSum11(selectedCards));
+		if (selectedCards.size() == 2 && containsPairSum11(selectedCards)) {
+
+			return true;
+		} else if (selectedCards.size() == 3 && containsJQK(selectedCards)) {
 			return true;
 
 		} else {
 			return false;
 		}
+
 	}
 
 	/**
@@ -87,17 +93,17 @@ public class ElevensBoard extends Board {
 			Boolean J = false;
 			Boolean Q = false;
 			Boolean K = false;
-			
-			if(cardAt(i).rank().equals("Jack")){
+
+			if (cardAt(i).rank().equals("jack")) {
 				J = true;
 			}
-			if(cardAt(i).rank().equals("Queen")){
+			if (cardAt(i).rank().equals("queen")) {
 				Q = true;
 			}
-			if(cardAt(i).rank().equals("King")){
+			if (cardAt(i).rank().equals("king")) {
 				K = true;
 			}
-			if(J&&Q&&K){
+			if (J && Q && K) {
 				return true;
 			}
 		}
@@ -119,10 +125,11 @@ public class ElevensBoard extends Board {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 		int sum = 0;
 		for (int i = 0; i < selectedCards.size(); i++) {
-			sum += selectedCards.get(i);
+			sum = cardAt(selectedCards.get(0)).pointValue() + cardAt(selectedCards.get(1)).pointValue();
+			System.out.println(sum);
 
 		}
-		if (sum == 36) {
+		if (sum == 11) {
 			return true;
 
 		} else {
@@ -142,16 +149,26 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-		int sum = 0;
+		Boolean J = false;
+		Boolean Q = false;
+		Boolean K = false;
 		for (int i = 0; i < selectedCards.size(); i++) {
-			System.out.println(selectedCards.get(i));
-
+			if (cardAt(selectedCards.get(i)).rank().equals("jack")) {
+				J = true;
+			}
+			if (cardAt(selectedCards.get(i)).rank().equals("queen")) {
+				Q = true;
+			}
+			if (cardAt(selectedCards.get(i)).rank().equals("king")) {
+				K = true;
+			}
+			System.out.println("J:" + J);
+			System.out.println("Q:" + Q);
+			System.out.println("K:" + K);
+			if (J && Q && K) {
+				return true;
+			}
 		}
-		if (sum == 0) {
-			return true;
-
-		} else {
-			return false;
-		}
+		return false;
 	}
 }

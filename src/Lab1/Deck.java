@@ -45,6 +45,7 @@ public class Deck {
 
 		}
 		size = cards.size();
+		shuffle();
 	}
 
 	/**
