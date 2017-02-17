@@ -80,6 +80,10 @@ public class ElevensBoard extends Board {
 	public boolean anotherPlayIsPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 ** **/
 		System.out.println(cardAt(0).pointValue());
+		Boolean J = false;
+		Boolean Q = false;
+		Boolean K = false;
+
 		for (int i = 0; i < size(); i++) {
 			for (int j = 0; j < size(); j++) {
 				int sum = cardAt(i).pointValue() + cardAt(j).pointValue();
@@ -90,18 +94,19 @@ public class ElevensBoard extends Board {
 		}
 
 		for (int i = 0; i < size(); i++) {
-			Boolean J = false;
-			Boolean Q = false;
-			Boolean K = false;
 
+			System.out.println(cardAt(i).rank());
 			if (cardAt(i).rank().equals("jack")) {
 				J = true;
+				System.out.println("Rec");
 			}
 			if (cardAt(i).rank().equals("queen")) {
 				Q = true;
+				System.out.println("Rec");
 			}
 			if (cardAt(i).rank().equals("king")) {
 				K = true;
+				System.out.println("Rec");
 			}
 			if (J && Q && K) {
 				return true;
