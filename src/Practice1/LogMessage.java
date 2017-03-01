@@ -17,9 +17,16 @@ public class LogMessage {
 		int searchLength = description.length() - keyword.length() + 1;
 		for (int i = 0; i < searchLength; i++) {
 			String currentString = description.substring(i, i + keyword.length());
-			System.out.println("Current:" + currentString);
+			char aheadString = description.charAt(i - 1);
+			char behindString = '.';
+			if (i <= searchLength &&  ) {
+				behindString = description.charAt(i + keyword.length());
+			}
+
 			if (currentString.equals(keyword)) {
-				return true;
+				if (aheadString == ' ' || behindString == ' ') {
+					return true;
+				}
 			}
 
 		}
