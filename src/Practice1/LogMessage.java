@@ -13,18 +13,20 @@ public class LogMessage {
 	}
 
 	public boolean contatinsWord(String keyword) {
+		String modDescription = " " + description + " ";
 
-		int searchLength = description.length() - keyword.length() + 1;
+		char aheadString = 0;
+		char behindString;
+		int searchLength = modDescription.length() - keyword.length() + 1;
 		for (int i = 0; i < searchLength; i++) {
-			String currentString = description.substring(i, i + keyword.length());
-			char aheadString = description.charAt(i - 1);
-			char behindString = '.';
-			if (i <= searchLength &&  ) {
-				behindString = description.charAt(i + keyword.length());
-			}
+
+			String currentString = modDescription.substring(i, i + keyword.length());
 
 			if (currentString.equals(keyword)) {
-				if (aheadString == ' ' || behindString == ' ') {
+				aheadString = modDescription.charAt(i - 1);
+				behindString = modDescription.charAt(i + keyword.length());
+
+				if (aheadString == ' ' && behindString == ' ') {
 					return true;
 				}
 			}
