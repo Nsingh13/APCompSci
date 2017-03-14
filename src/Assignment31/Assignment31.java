@@ -52,6 +52,7 @@ public class Assignment31 {
 		}
 	}
 
+	// Challenge #2
 	public static int fibonacci(int n) {
 
 		if (n == 0 || n == 1) {
