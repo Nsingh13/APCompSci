@@ -3,13 +3,9 @@ package Assignment13;
 import java.util.Random;
 import java.util.Scanner;
 
-
 //	Sean Kelker
 //	Per 2
 //	10/17/16
-
-
-
 
 public class RockPaperScisscors {
 	public static Scanner input = new Scanner(System.in);
@@ -94,13 +90,11 @@ public class RockPaperScisscors {
 				System.out.println("You Tied!" + "The computer chose " + compChoiceString);
 				ties++;
 
-			}
-			if (compGuessNum == 1) {// Paper
+			} else if (compGuessNum == 1) {// Paper
 				System.out.println("The computer wins!" + "The computer chose " + compChoiceString);
 				compWins++;
 
-			}
-			if (compGuessNum == 2) {// Scissors
+			} else if (compGuessNum == 2) {// Scissors
 				System.out.println("You Win!" + "The computer chose " + compChoiceString);
 				humanWins++;
 
@@ -108,36 +102,32 @@ public class RockPaperScisscors {
 		}
 		////////////////////////////////////////////////////////
 		// Paper
-		if (userGuessNum == 1) {
+		else if (userGuessNum == 1) {
 			if (compGuessNum == 0) { // Rock
 				System.out.println("You Win!" + "The computer chose " + compChoiceString);
 				humanWins++;
 
-			}
-			if (compGuessNum == 1) {// Paper
+			} else if (compGuessNum == 1) {// Paper
 				System.out.println("You Tied!" + "The computer chose " + compChoiceString);
 				ties++;
 
-			}
-			if (compGuessNum == 2) {// Scissors
+			} else if (compGuessNum == 2) {// Scissors
 				System.out.println("The computer wins!" + "The computer chose " + compChoiceString);
 				compWins++;
 			}
 		}
 		//////////////////////////////////////////////////////////
 		// Scissors
-		if (userGuessNum == 2) {
+		else if (userGuessNum == 2) {
 			if (compGuessNum == 0) { // Rock
 				System.out.println("The computer wons!" + "The computer chose " + compChoiceString);
 				compWins++;
 
-			}
-			if (compGuessNum == 1) {// Paper
+			} else if (compGuessNum == 1) {// Paper
 				System.out.println("You Win!" + "The computer chose " + compChoiceString);
 				humanWins++;
 
-			}
-			if (compGuessNum == 2) {// Scissors
+			} else if (compGuessNum == 2) {// Scissors
 				System.out.println("You Tied!" + "The computer chose " + compChoiceString);
 				ties++;
 			}
