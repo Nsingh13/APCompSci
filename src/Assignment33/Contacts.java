@@ -6,12 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Describes a list of Persons.
- * 
- * @author (Jake Blozan)
- * @version (3/16/17)
- */
 public class Contacts {
 	private List<Person> people;
 
