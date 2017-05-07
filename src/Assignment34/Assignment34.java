@@ -33,10 +33,15 @@ public class Assignment34 {
 		int minLength = scan.nextInt();
 		boolean run = true;
 		while (run) {
+			if (minLength >= 36) {
+				System.out.println("No Words Of Length");
+				break;
+			}
 			int randIndex = (int) (Math.random() * list.size());
 			if (list.get(randIndex).length() >= minLength) {
 				System.out.println(list.get(randIndex));
 				run = false;
+
 			}
 		}
 
