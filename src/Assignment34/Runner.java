@@ -11,24 +11,36 @@ public class Runner {
 
 	public static Scanner scan = new Scanner(System.in);
 	public static ArrayList<String> list = new ArrayList<String>();
+	public static boolean first = true;
 
 	public static void main(String[] args) {
 
-		Hangman hang = new Hangman(generateWord());
-		hang.play();
+		while (true) {
+			Hangman hang = new Hangman(generateWord());
+			hang.play();
+			System.out.println("Would you like to play again (yes/no)");
+			String input = scan.next();
+			if (!input.equals("yes")) {
+				break;
+			}
+
+		}
+		System.out.println("Goodbye");
 
 	}
 
 	public static String generateWord() {
 		try {
-			String filename;
-
-			System.out.println("Welcome to Hangman! Do you want the 'short' or 'long' words list?");
-			String input = scan.nextLine();
-			if (input.equals("short")) {
-				filename = "words_short.txt";
-			} else {
-				filename = "words.txt";
+			String filename = "words_short.txt";
+			if (first) {
+				System.out.println("Welcome to Hangman! Do you want the 'short' or 'long' words list?");
+				String input = scan.nextLine();
+				first = false;
+				if (input.equals("short")) {
+					filename = "words_short.txt";
+				} else {
+					filename = "words.txt";
+				}
 			}
 			File file = new File(filename);
 

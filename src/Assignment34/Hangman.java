@@ -1,8 +1,8 @@
 package Assignment34;
 
-import java.util.Scanner;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Main logic for running the game of hangman.
@@ -18,13 +18,15 @@ public class Hangman {
 	private String word; // word that player has to guess
 	private String[] board; // the letters on the board ("" if not guessed yet)
 	private int maxGuesses; // number of guesses player gets before losing (7)
-	private int wrongGuesses = 0;//Keeps track of the number of time a guess is wrong
+	private int wrongGuesses = 0;// Keeps track of the number of time a guess is
+									// wrong
+
 	/**
 	 * Constructs a hangman game with <code>word</code> for player to guess.
 	 */
 	public Hangman(String word) {
 		/* Initialize class variables */
-		System.out.println(word);
+
 		this.word = word;
 		maxGuesses = 7;
 		board = new String[word.length()];
@@ -38,11 +40,7 @@ public class Hangman {
 			letters.add(word.substring(i, i + 1));
 
 		}
-		for (int i = 0; i < letters.size(); i++) {
 
-			System.out.print(letters.get(i));
-
-		}
 	}
 
 	/**
@@ -59,7 +57,6 @@ public class Hangman {
 		 * game to the screen when the game ends.
 		 */
 		Scanner scan = new Scanner(System.in);
-		
 
 		while (!hasWon()) {
 
@@ -94,7 +91,7 @@ public class Hangman {
 	 *            the number of wrong guesses so far.
 	 */
 	public void printGame(int wrong) {
-		
+
 		printHangman(wrong);
 		System.out.println("");
 		for (int i = 0; i < word.length(); i++) {
@@ -133,10 +130,7 @@ public class Hangman {
 			System.out.println("You lost the word was " + word);
 		}
 	}
-	public void resetGame() {
-		
-		
-	}
+
 	/**
 	 * Gets state of game.
 	 * 
