@@ -17,6 +17,7 @@ public class Hangman {
 															// in the word
 	private String word; // word that player has to guess
 	private String[] board; // the letters on the board ("" if not guessed yet)
+
 	private int maxGuesses; // number of guesses player gets before losing (7)
 	private int wrongGuesses = 0;// Keeps track of the number of time a guess is
 									// wrong
@@ -31,14 +32,14 @@ public class Hangman {
 		maxGuesses = 7;
 		board = new String[word.length()];
 
+		// This populates the board with the -- blank slot
 		for (int i = 0; i < word.length(); i++) {
 			board[i] = "__";
 		}
 
-		// for (int i = word.length() - 1; i >= 0; i--) {
+		// Creates the key for the word
 		for (int i = 0; i < word.length(); i++) {
 			letters.add(word.substring(i, i + 1));
-
 		}
 
 	}
@@ -58,20 +59,30 @@ public class Hangman {
 		 */
 		Scanner scan = new Scanner(System.in);
 
+		// Loop continues to run until a winner has been determined
 		while (!hasWon()) {
 
+			// This kills the loop if the guesses run out
 			if (wrongGuesses == maxGuesses) {
 				break;
 			}
 
+			// This prints the current board state
 			printGame(wrongGuesses);
+
+			// Gets the current guess
 			String guessLetter = scan.nextLine();
 
+			// determine whether the guess has already been attempted
 			if (guesses.contains(guesses)) {
 				System.out.println(guessLetter + " has already been guesses");
 				wrongGuesses++;
+
+				// This determines whether the guess is in the word
 			} else if (validateGuess(guessLetter)) {
 				System.out.println(guessLetter + " is in the word");
+
+				// This is if the guess is not in the word
 			} else {
 				System.out.println(guessLetter + " is not in the word");
 				wrongGuesses++;
@@ -79,6 +90,7 @@ public class Hangman {
 
 		}
 
+		// Once the loop is broken or ends this prints out the final result
 		printResult();
 
 	}
@@ -91,30 +103,45 @@ public class Hangman {
 	 *            the number of wrong guesses so far.
 	 */
 	public void printGame(int wrong) {
-
+		// Prints the hangman askii thing
 		printHangman(wrong);
+
+		// This loop prints the board with the slots
 		System.out.println("");
 		for (int i = 0; i < word.length(); i++) {
-
 			System.out.print("\t" + board[i]);
 		}
-		System.out.println("");
-		System.out.println("Guess a letter (" + (maxGuesses - wrong) + " guesses left):");
+
+		// Prints out the current guess state of the game
+		System.out.println("\nGuess a letter (" + (maxGuesses - wrong) + " guesses left):");
 	}
 
+	/**
+	 * This determines whether the guess is correct and in the word
+	 * 
+	 * @param guess
+	 *            The letter that is guessed
+	 *
+	 *            Return true if the letter is in the word and false
+	 */
+
 	public boolean validateGuess(String guess) {
-		guesses.add(guess);
+		guesses.add(guess);// Adds guess to the list of guessed words
+
+		// enters if if the guess is in the word
 		if (letters.contains(guess)) {
-			int numOfLetters = 1;
+
+			// This parses the word array and replaces the blank spot with the
+			// letters
 			for (int i = 0; i < letters.size(); i++) {
 				if (letters.get(i).equals(guess)) {
-					numOfLetters++;
 					board[i] = guess;
 				}
 			}
 
 			return true;
 		} else {
+			// This is returned when the letter is not in the word
 			return false;
 		}
 	}
@@ -123,7 +150,11 @@ public class Hangman {
 	 * Tells user if they won or lost (with word shown).
 	 */
 	public void printResult() {
+		// Prints the final stage of the game
 		printGame(wrongGuesses);
+
+		// determines whether the player won or not and prints the correct
+		// statement
 		if (hasWon()) {
 			System.out.println("You won the word was " + word);
 		} else {
@@ -138,10 +169,13 @@ public class Hangman {
 	 */
 	public boolean hasWon() {
 		String guessedWord = "";
+
+		// guessed word is populated with the current state of the board
 		for (int i = 0; i < board.length; i++) {
 			guessedWord += board[i];
-
 		}
+
+		// It is then checked against the word and determines if the
 		if (guessedWord.equals(word)) {
 			return true;
 		} else {
