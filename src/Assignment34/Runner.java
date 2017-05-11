@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Runner {
@@ -80,8 +81,21 @@ public class Runner {
 			e.printStackTrace();
 		}
 
+		// ask the user for the minimum word length
 		System.out.println("What should the minimum word length be?");
-		int minLength = scan.nextInt();
+		int minLength = 0;
+		boolean validInput = false;
+
+		// loop until the user gives a valid response
+		while (!validInput) {
+			try {
+				minLength = scan.nextInt();
+				validInput = true;
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid value!");
+				scan.next(); // this consumes the invalid token
+			}
+		}
 		boolean run = true;
 		while (run) {
 

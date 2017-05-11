@@ -73,6 +73,12 @@ public class Hangman {
 			// Gets the current guess
 			String guessLetter = scan.nextLine();
 
+			// This determiens if the guess is more than one letter and grabs
+			// the first letter
+			if (guessLetter.length() > 1) {
+				guessLetter = String.valueOf(guessLetter.charAt(0));
+			}
+
 			// determine whether the guess has already been attempted
 			if (guesses.contains(guesses)) {
 				System.out.println(guessLetter + " has already been guesses");
