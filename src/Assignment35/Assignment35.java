@@ -1,8 +1,11 @@
 package Assignment35;
 
+import java.text.DecimalFormat;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -66,12 +69,34 @@ public class Assignment35 extends Application {
 		text5.setTextFill(Color.RED);
 		pane.add(text5, 0, 4);
 
-		// okBtn.setOnAction(e -> num.setText("Clicked"));
+		Button calculateButton = new Button();
+		calculateButton.setOnAction(e -> 
+		
+				
+		
+				
+				
+				
+		));
 
 		Scene scene = new Scene(pane, 300, 250); // Scene is the container for
 													// all content
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+
+	public double getValue(String text) {
+
+		if (text.matches("-?\\d+(\\.\\d+)?")) {
+			double num = Double.valueOf(text);
+			DecimalFormat fin = new DecimalFormat("#.##");
+			String rounded = fin.format(num);
+			return Double.valueOf(rounded);
+		}
+		else{
+			return 0.00;
+		}
+
 	}
 
 	public static void main(String[] args) {
