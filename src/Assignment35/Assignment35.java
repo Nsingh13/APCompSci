@@ -19,9 +19,7 @@ public class Assignment35 extends Application {
 	public void start(Stage primaryStage) // Stage is the top-level JavaFX
 											// container (window)
 	{
-		primaryStage.setTitle("Buttons and Labels");
-		// StackPane pane = new StackPane(); // Root node for all objects
-		// (buttons, labels, etc.) in this resizeable layout
+		primaryStage.setTitle("Assignment 35");
 
 		GridPane pane = new GridPane();
 		pane.setPadding(new Insets(10, 10, 10, 10)); // Insets(top, right,
@@ -29,55 +27,55 @@ public class Assignment35 extends Application {
 		pane.setHgap(10);
 		pane.setVgap(10);
 
-		TextField num = new TextField();
-		pane.add(num, 1, 0);
+		final int FOOD = 0;
+		final int DRINKS = 1;
+		final int SUBTOTAL = 2;
+		final int TAX = 3;
+		final int TOTAL = 4;
 
-		Label text1 = new Label("Food:");
-		text1.setFont(Font.font("Times New Roman", FontPosture.REGULAR, 20));
-		text1.setTextFill(Color.RED);
-		pane.add(text1, 0, 0);
+		final double TAX_RATE = .0875;
 
-		TextField num2 = new TextField();
-		pane.add(num2, 1, 1);
+		TextField[] textBox = new TextField[5];
+		Label[] label = new Label[5];
 
-		Label text2 = new Label("Drinks:");
-		text2.setFont(Font.font("Times New Roman", FontPosture.REGULAR, 20));
-		text2.setTextFill(Color.RED);
-		pane.add(text2, 0, 1);
+		// Food
+		label[FOOD] = new Label("Food:");
+		textBox[FOOD] = new TextField();
 
-		TextField num3 = new TextField();
-		pane.add(num3, 1, 2);
+		label[DRINKS] = new Label("Drinks:");
+		textBox[DRINKS] = new TextField();
 
-		Label text3 = new Label("Subtotal:");
-		text3.setFont(Font.font("Times New Roman", FontPosture.REGULAR, 20));
-		text3.setTextFill(Color.RED);
-		pane.add(text3, 0, 2);
+		label[SUBTOTAL] = new Label("Subtotal:");
+		textBox[SUBTOTAL] = new TextField();
 
-		TextField num4 = new TextField();
-		pane.add(num4, 1, 3);
+		label[TAX] = new Label("Tax:");
+		textBox[TAX] = new TextField();
 
-		Label text4 = new Label("Tax:");
-		text4.setFont(Font.font("Times New Roman", FontPosture.REGULAR, 20));
-		text4.setTextFill(Color.RED);
-		pane.add(text4, 0, 3);
+		label[TOTAL] = new Label("Total:");
+		textBox[TOTAL] = new TextField();
 
-		TextField num5 = new TextField();
-		pane.add(num5, 1, 4);
+		for (int i = 0; i < 5; i++) {
+			label[i].setFont(Font.font("Times New Roman", FontPosture.REGULAR, 20));
+			label[i].setTextFill(Color.RED);
+			pane.add(label[i], 0, i);
+			pane.add(textBox[i], 1, i);
+		}
 
-		Label text5 = new Label("Total:");
-		text5.setFont(Font.font("Times New Roman", FontPosture.REGULAR, 20));
-		text5.setTextFill(Color.RED);
-		pane.add(text5, 0, 4);
+		Button calculateButton = new Button("Calculate");
+		pane.add(calculateButton, 0, 5);
+		calculateButton.setOnAction(e -> {
+			double foodValue = round(textBox[FOOD].getText());
+			double drinksValue = round(textBox[DRINKS].getText());
+			double sum = round(String.valueOf(foodValue + drinksValue));
+			double tax = round(String.valueOf(sum * TAX_RATE));
 
-		Button calculateButton = new Button();
-		calculateButton.setOnAction(e -> 
-		
-				
-		
-				
-				
-				
-		));
+			textBox[FOOD].setText(String.valueOf(foodValue));
+			textBox[DRINKS].setText(String.valueOf(drinksValue));
+			textBox[SUBTOTAL].setText(String.valueOf(sum));
+			textBox[TAX].setText(String.valueOf(tax));
+			textBox[TOTAL].setText(String.valueOf(tax + sum));
+
+		});
 
 		Scene scene = new Scene(pane, 300, 250); // Scene is the container for
 													// all content
@@ -85,15 +83,14 @@ public class Assignment35 extends Application {
 		primaryStage.show();
 	}
 
-	public double getValue(String text) {
+	public double round(String text) {
 
 		if (text.matches("-?\\d+(\\.\\d+)?")) {
 			double num = Double.valueOf(text);
 			DecimalFormat fin = new DecimalFormat("#.##");
 			String rounded = fin.format(num);
 			return Double.valueOf(rounded);
-		}
-		else{
+		} else {
 			return 0.00;
 		}
 
