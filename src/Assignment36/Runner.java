@@ -14,7 +14,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -34,17 +33,16 @@ public class Runner extends Application {
 	private int paddleinitalBallPosY = 20;
 	private int width = 10;
 	private int height = 75;
-	private int initPaddleVel = 2;
+	private int initPaddleVel = 3;
 
 	private Paddle paddleAI;
 	private boolean playersTurn = false;
 	final int initalPaddleY = 240;
 
 	Canvas canvas;
-	
+
 	private int playerScore = 0;
 	private int AIScore = 0;
-	
 
 	public Runner() {
 		screenWidth = 650;
@@ -52,7 +50,8 @@ public class Runner extends Application {
 
 		ball = new Ball(initalBallPosX, initalBallPosY, radius, ballInitVelX, ballInitVelY);
 		paddle = new Paddle(paddleinitalBallPosX, paddleinitalBallPosY, width, height, initPaddleVel);
-		paddleAI = new Paddle(screenWidth - paddleinitalBallPosX, paddleinitalBallPosY, width, height, initPaddleVel);
+		paddleAI = new Paddle(screenWidth - paddleinitalBallPosX - width, paddleinitalBallPosY, width, height,
+				initPaddleVel);
 	}
 
 	@Override
@@ -69,7 +68,6 @@ public class Runner extends Application {
 		stage.show();
 		tl.play();
 		paddleMovement(canvas);
-		
 
 	}
 
@@ -85,14 +83,15 @@ public class Runner extends Application {
 		Font font = new Font("Impact", 60);
 		gc.setFont(font);
 		gc.fillText(String.valueOf(playerScore), 200, 60);
-		gc.fillText(String.valueOf(AIScore), 450, 60);
-		
+		gc.fillText(String.valueOf(AIScore), 420, 60);
+
 		gc.setFill(Color.BLACK);
+
 		for (int y = 10; y < screenHeight; y += 50) {
 			gc.fillRect(screenWidth / 2, y, 15, 20);
 
 		}
-		
+
 		ball.move();
 		paddleMovement(canvas);
 		checkCollision();
@@ -122,26 +121,21 @@ public class Runner extends Application {
 
 	public void checkCollision() {
 
-		// Checks for left hand wall Collison
-		if (ball.getX() < 0 ){ 
-
-			playerScore++;
-			ball.resetBall();
-			playersTurn = !playersTurn;
+		if (ball.getY() < ball.getR() || ball.getY() > screenHeight - ball.getR()) {
+			ball.hitTopBotWall();
 		}
-		
-		if(ball.getX() > screenWidth ) {
+
+		// Checks for left hand wall Collison
+		if (ball.getX() < -ball.getR()) {
+
 			AIScore++;
 			ball.resetBall();
 			playersTurn = !playersTurn;
 		}
 
-		if (ball.getY() < ball.getR() || ball.getY() > screenHeight - ball.getR()) {
-			ball.hitTopBotWall();
-		}
+		// left hand paddle collision
+		else if ((paddle.getX() + width) >= ball.getX() && paddle.getX() < ball.getX()) {
 
-		// This looks if the ball hits the lift paddle
-		if (ball.getX() < paddle.getX() + ball.getR()+5) {
 			if (ball.getY() > paddle.getY() && ball.getY() < paddle.getY() + height) {
 				ball.hitSideWall();
 				playersTurn = false;
@@ -149,7 +143,16 @@ public class Runner extends Application {
 
 		}
 
-		if (ball.getX() > paddleAI.getX() - ball.getR()-5) {
+		// Right hand collision
+
+		if (ball.getX() > screenWidth + ball.getR()) {
+			playerScore++;
+			ball.resetBall();
+			playersTurn = !playersTurn;
+		}
+
+		else if ((paddleAI.getX() + width) <= ball.getX() && paddleAI.getX() > ball.getX()) {
+
 			if (ball.getY() > paddleAI.getY() && ball.getY() < paddleAI.getY() + height) {
 				ball.hitSideWall();
 				playersTurn = true;
