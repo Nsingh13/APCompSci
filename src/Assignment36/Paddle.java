@@ -24,11 +24,12 @@ public class Paddle
     /**
      * Changes y-coordinate for movement.
      */
-    public void move()
+    public void move(int Y)
     {
-        y += v;
+        y  = Y;
     }
-    
+  
+
     /**
      * Changes direction of movement.
      */
