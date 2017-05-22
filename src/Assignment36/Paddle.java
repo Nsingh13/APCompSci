@@ -28,6 +28,16 @@ public class Paddle
     {
         y  = Y;
     }
+    
+    public void moveUp()
+    {
+        y  += -v;
+    }
+    
+    public void moveDown()
+    {
+        y  += v;
+    }
   
 
     /**
